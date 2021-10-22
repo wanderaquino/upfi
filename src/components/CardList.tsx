@@ -24,11 +24,13 @@ export function CardList({ cards }: CardsProps): JSX.Element {
 
   return (
     <>
+      <SimpleGrid columns={3} spacing={10}>
       {cards.map(card => {
-        return (
-          <Card key={card.id} data={card} viewImage={()=>{}}></Card>
-        )
-      })}
+          return (
+            <Card key={card.id} data={card} viewImage={()=>{}}></Card>
+          )
+        })}
+      </SimpleGrid>
     </>
   );
 }
