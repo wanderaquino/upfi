@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
     
       const images = data?.pages.map(page => page.data).flat();
       return images;
-  }, [status]);
+  }, [data]);
 
   // TODO RENDER LOADING SCREEN
 
