@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
             {
               hasNextPage &&
                 <Flex mt="1rem">
-                  <Button>Carregar mais...</Button>
+                  <Button onClick={() => fetchNextPage()}>Carregar mais</Button>
                 </Flex> 
             }
             {/* TODO RENDER LOAD MORE BUTTON IF DATA HAS NEXT PAGE */}
