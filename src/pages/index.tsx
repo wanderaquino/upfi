@@ -29,16 +29,16 @@ export default function Home(): JSX.Element {
     hasNextPage,
   } = useInfiniteQuery('images', fetchImages, {
     getNextPageParam: (lastPage, pages) => {
-      return  pages[0].after;
+      return  pages[pages.length -1].after;
       }
     }
   );
 
   const formattedData = useMemo(() => {
     // TODO FORMAT AND FLAT DATA ARRAY
-    
       const images = data?.pages.map(page => page.data).flat();
       return images;
+
   }, [data]);
 
   // TODO RENDER LOADING SCREEN
