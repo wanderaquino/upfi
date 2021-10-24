@@ -10,7 +10,12 @@ import { Error } from '../components/Error';
 
 export default function Home(): JSX.Element {
 
-  const fetchImages = async () => {
+  const fetchImages = async (param) => {
+
+    if(param.pageParam !== undefined) {
+      const images = await api.get("images", {params: {after: param.pageParam}});
+      return images.data;
+    }
     const images = await api.get("images");
     return images.data;
   }
