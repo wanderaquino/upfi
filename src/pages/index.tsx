@@ -41,10 +41,6 @@ export default function Home(): JSX.Element {
 
   }, [data]);
 
-  // TODO RENDER LOADING SCREEN
-
-  // TODO RENDER ERROR SCREEN
-
   return (
     <>
       <Header />
@@ -62,7 +58,6 @@ export default function Home(): JSX.Element {
                   <Button onClick={() => fetchNextPage()}>Carregar mais</Button>
                 </Flex> 
             }
-            {/* TODO RENDER LOAD MORE BUTTON IF DATA HAS NEXT PAGE */}
         </Box>
         ) 
       }
