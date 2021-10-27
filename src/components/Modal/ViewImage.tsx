@@ -33,7 +33,7 @@ export function ModalViewImage({
               display="flex" 
               justifyContent="flex-start" 
               background="pGray.800" p=".3rem">
-                <Link href={imgUrl} color="pGray.50" fontSize=".8rem" isExternal>Abrir Original</Link>
+                <Link href={imgUrl} color="pGray.50" fontSize=".8rem" isExternal fontWeight="700">Abrir Original</Link>
             </ModalFooter>
           </ModalContent>
         </ModalOverlay>
