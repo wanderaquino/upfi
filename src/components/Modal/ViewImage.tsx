@@ -23,9 +23,9 @@ export function ModalViewImage({
     <>
       <Modal onClose={onClose} isOpen={isOpen}>
         <ModalOverlay>
-          <ModalContent mx="auto" my="auto" maxW="870px" >
-            <ModalBody m="0" p="0" background="pGray.800">
-              <Image m="0" objectFit="contain" src={imgUrl} />
+          <ModalContent w="auto" maxW="900px" maxH="600px">
+            <ModalBody  m="0" p="0" background="pGray.800">
+              <Image w="auto" h="35rem" m="0" objectFit="contain" src={imgUrl} />
             </ModalBody>
             <ModalFooter 
               borderBottomLeftRadius="5px" 
