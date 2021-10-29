@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
             {
               hasNextPage &&
                 <Flex mt="1rem">
-                  <Button onClick={() => fetchNextPage()} isLoading={isFetchingNextPage}>Carregar mais</Button>
+                  <Button onClick={() => fetchNextPage()} isLoading={isFetchingNextPage} loadingText="Carregando...">Carregar mais</Button>
                 </Flex> 
             }
         </Box>
