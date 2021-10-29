@@ -18,13 +18,20 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
 
   const formValidations = {
     image: {
-      // TODO REQUIRED, LESS THAN 10 MB AND ACCEPTED FORMATS VALIDATIONS
+      required: "Arquivo obrigatório",
+      validate: {
+        lessThan10MB: () => {} ,
+        acceptedFormats: () => {}
+      }
     },
     title: {
-      // TODO REQUIRED, MIN AND MAX LENGTH VALIDATIONS
+      minLength: 2,
+      maxLength: 20,
+      required: "Título obrigatório"
     },
     description: {
-      // TODO REQUIRED, MAX LENGTH VALIDATIONS
+      maxLength: 65,
+      required: "Descrição obrigatória"
     },
   };
 
