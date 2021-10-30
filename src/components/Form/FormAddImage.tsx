@@ -35,7 +35,10 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       required: "Título obrigatório"
     },
     description: {
-      maxLength: 65,
+      maxLength: {
+        value: 65,
+        message: "Máximo de 65 caracteres"
+      },
       required: "Descrição obrigatória"
     },
   };
