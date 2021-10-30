@@ -15,13 +15,12 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
   const [imageUrl, setImageUrl] = useState('');
   const [localImageUrl, setLocalImageUrl] = useState('');
   const toast = useToast();
-
   const formValidations = {
     image: {
       required: "Arquivo obrigatório",
       validate: {
-        lessThan10MB: () => {} ,
-        acceptedFormats: () => {}
+        lessThan10MB: file => file[0].size < 10485760 || "O arquivo deve ser menor que 10MB",
+        acceptedFormats: file =>  file[0].type === "image/jpeg" || "Imagem diferente"
       }
     },
     title: {
