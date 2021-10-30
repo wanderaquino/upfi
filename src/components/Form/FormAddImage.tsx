@@ -100,8 +100,6 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
           placeholder="Descrição da imagem..."
           {...register("imageDescription", {...formValidations.description})}
           error={errors.imageDescription}
-          // TODO SEND DESCRIPTION ERRORS
-          // TODO REGISTER DESCRIPTION INPUT WITH VALIDATIONS
         />
       </Stack>
 
