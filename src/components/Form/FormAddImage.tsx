@@ -24,8 +24,14 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       }
     },
     title: {
-      minLength: 2,
-      maxLength: 20,
+      minLength: {
+        value: 2,
+        message: "Mínimo de 2 caracteres"
+      },
+      maxLength: {
+        value: 20,
+        message: "Máximo de 20 caracteres"
+      },
       required: "Título obrigatório"
     },
     description: {
