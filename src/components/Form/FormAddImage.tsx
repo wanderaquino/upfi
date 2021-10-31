@@ -44,10 +44,18 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
   };
 
   const queryClient = useQueryClient();
-  const mutation = useMutation(
-    // TODO MUTATION API POST REQUEST,
+  const mutation = useMutation( async (imageData : {image: string, title: string, description: string}) => {
+
+    const requestImageData = {
+      url: imageUrl,
+      title: imageData.title,
+      description: imageData.description
+    }
+     return await api.post("images", requestImageData) },
     {
-      // TODO ONSUCCESS MUTATION
+      onSuccess: (data, variables, context) => {
+        queryClient.invalidateQueries("images");
+      }
     }
   );
 
