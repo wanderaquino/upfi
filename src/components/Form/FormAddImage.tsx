@@ -96,6 +96,10 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       })
     } finally {
       // TODO CLEAN FORM, STATES AND CLOSE MODAL
+      reset();
+      closeModal();
+      setImageUrl("");
+      setLocalImageUrl("");
     }
   };
 
