@@ -83,6 +83,11 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       await mutation.mutateAsync(data as any);
       // TODO EXECUTE ASYNC MUTATION
       // TODO SHOW SUCCESS TOAST
+      toast({
+        title: "Imagem cadastrada",
+        description: "Sua imagem foi cadastrada com sucesso.",
+        status: "success"
+      })
     } catch {
       // TODO SHOW ERROR TOAST IF SUBMIT FAILED
     } finally {
