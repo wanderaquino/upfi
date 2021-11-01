@@ -64,9 +64,11 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       title: imageData.title,
       description: imageData.description
     }
-     return await api.post("images", requestImageData) },
+    const response =  await api.post("/api/images", requestImageData);
+    return response;
+   },
     {
-      onSuccess: (data, variables, context) => {
+      onSuccess: () => {
         queryClient.invalidateQueries("images");
       }
     }
@@ -84,7 +86,7 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
 
   const onSubmit = async (data: Record<string, unknown>): Promise<void> => {
     try {
-      // TODO SHOW ERROR TOAST IF IMAGE URL DOES NOT EXISTS
+
       if(!imageUrl) {
         toast({
           title: "Imagem não adicionada",
@@ -107,11 +109,8 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
         status: "error"
       })
     } finally {
-      // TODO CLEAN FORM, STATES AND CLOSE MODAL
       reset();
       closeModal();
-      setImageUrl("");
-      setLocalImageUrl("");
     }
   };
 
