@@ -10,14 +10,11 @@ import { Error } from '../components/Error';
 
 export default function Home(): JSX.Element {
 
-  const fetchImages = async (param) => {
-
-    if(param.pageParam !== undefined) {
-      const images = await api.get("images", {params: {after: param.pageParam}});
-      return images.data;
-    }
-    const images = await api.get("images");
-    return images.data;
+  const fetchImages = async (param = null) => {
+      const {pageParam} = param;
+      const response = await api.get("/api/images", {params: {after: pageParam}});
+      
+      return response.data;
   }
  
   const {
@@ -29,13 +26,12 @@ export default function Home(): JSX.Element {
     hasNextPage,
   } = useInfiniteQuery('images', fetchImages, {
     getNextPageParam: (lastPage, pages) => {
-      return  pages[pages.length -1].after;
+      return  pages[pages.length -1].after || null;
       }
     }
   );
 
   const formattedData = useMemo(() => {
-    // TODO FORMAT AND FLAT DATA ARRAY
       const images = data?.pages.map(page => page.data).flat();
       return images;
 
@@ -43,22 +39,24 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      <Header />
       {
         isLoading? (
           <Loading />
         ) : isError ? (
           <Error />
         ) : ( 
+          <>
+          <Header />
           <Box maxW={1120} px={20} mx="auto" my={20}>
             <CardList cards={formattedData} />
             {
               hasNextPage &&
                 <Flex mt="1rem">
-                  <Button onClick={() => fetchNextPage()} isLoading={isFetchingNextPage} loadingText="Carregando...">Carregar mais</Button>
+                  <Button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>{isFetchingNextPage ? "Carregando..." : "Carregar mais"}</Button>
                 </Flex> 
             }
-        </Box>
+          </Box>
+          </>
         ) 
       }
     </>
