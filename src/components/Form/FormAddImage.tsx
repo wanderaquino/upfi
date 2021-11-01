@@ -11,6 +11,12 @@ interface FormAddImageProps {
   closeModal: () => void;
 }
 
+type ImageProps = {
+  title: string | unknown;
+  description: string | unknown;
+  url: string;
+};
+
 export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
   const [imageUrl, setImageUrl] = useState('');
   const [localImageUrl, setLocalImageUrl] = useState('');
@@ -51,7 +57,7 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
   };
 
   const queryClient = useQueryClient();
-  const mutation = useMutation( async (imageData : {image: string, title: string, description: string}) => {
+  const mutation = useMutation( async(imageData : ImageProps) => {
 
     const requestImageData = {
       url: imageUrl,
@@ -87,9 +93,8 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
         })
         return;
       }
-      await mutation.mutateAsync(data as any);
-      // TODO EXECUTE ASYNC MUTATION
-      // TODO SHOW SUCCESS TOAST
+      await mutation.mutateAsync(data as ImageProps);
+
       toast({
         title: "Imagem cadastrada",
         description: "Sua imagem foi cadastrada com sucesso.",
